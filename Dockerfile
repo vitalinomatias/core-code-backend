@@ -20,23 +20,22 @@ ENV SERVER_PORT="8500" \
     ORACLE_PASS="mypass" \
     ORACLE_CONNSTR="localhost:1521/orclpdb"
 
-# COPY . /opt/app
+COPY . /opt/app
 
-# WORKDIR /opt/app
+WORKDIR /opt/app
 
-# RUN npm install
-
-# CMD ["npm", "run", "dev"]
-# CMD ["npm", "start"]
-
-# segunda opcion
-
-RUN mkdir -p /app/node_modules
-WORKDIR /app
-COPY package*.json ./
-# USER node
 RUN npm install
-# COPY --chown=node:node . .
-# CMD node app.js
 
-EXPOSE 8500
+CMD ["npm", "start"]
+
+# opcion de desarrollo
+
+# RUN mkdir -p /app/node_modules
+# WORKDIR /app
+# COPY package*.json ./
+# # USER node
+# RUN npm install
+# # COPY --chown=node:node . .
+# # CMD node app.js
+
+# EXPOSE 8500
